@@ -1,6 +1,7 @@
 ﻿using antique_api.Models;
 using antique_api.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace antique_api.Controllers
     [Authorize]
     [ApiController]
     [Route("api/users")]
+
     public class UsersController : ControllerBase
     {
         private IUserService _userService;

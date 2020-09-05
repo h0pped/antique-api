@@ -179,7 +179,7 @@ namespace antique_api.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Authorize]
 
         [Route("add")]

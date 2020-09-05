@@ -36,6 +36,7 @@ namespace antique_api
         public void ConfigureServices(IServiceCollection services)
         {
 
+
             services.AddCors();
             services.AddControllers();
             services.AddDbContext<CTX>(options =>
@@ -85,14 +86,15 @@ namespace antique_api
                 FileProvider = new PhysicalFileProvider(dirPathSave),
                 RequestPath = new PathString(imageUrl)
             });
-
-            app.UseCors(builder => builder.AllowAnyOrigin());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseRouting();
+            app.UseCors(
+                options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+            );
             app.UseAuthentication();
 
             app.UseAuthorization();
