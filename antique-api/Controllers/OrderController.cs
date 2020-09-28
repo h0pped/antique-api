@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using antique_api.DBContext;
 using antique_api.Models.Antique;
 using antique_api.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Antique.Controllers
 {
     [Route("api/orders")]
+    [Authorize]
     public class OrdersController : ControllerBase
     {
         private readonly CTX _context;
@@ -65,6 +67,8 @@ namespace Antique.Controllers
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
+
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
             //var order =  _context.Order.Select(x=> new{
